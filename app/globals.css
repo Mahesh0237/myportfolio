@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@source "../node_modules/@nayeshdaggula/tailify";
+
+@custom-variant dark (&:where([data-tailify-theme-variant=dark], [data-tailify-theme-variant=dark] *));
+
+/* Ensure dark mode applies to `body` */
+[data-tailify-theme-variant="dark"] body {
+  @apply bg-neutral-900 text-white;
+}
+
+[data-tailify-theme-variant="light"] body {
+  @apply bg-white text-black;
+}
+
+@theme {
+  --breakpoint-xxxs: 279px; /* Extra small phones */
+  --breakpoint-xxs: 320px; /* Extra small phones */
+  --breakpoint-xxm: 375px; /* Small phones */
+  --breakpoint-xs: 425px; /* Small phones */
+  --breakpoint-sm: 640px; /* Phones */
+  --breakpoint-md: 768px; /* Tablets */
+  --breakpoint-lg: 1024px; /* Small desktops / landscape tablets */
+  --breakpoint-xl: 1280px; /* Large desktops */
+  --breakpoint-2xl: 1536px; /* Ultra-wide desktops */
+  --breakpoint-3xl: 1920px; /* Very large screens (gaming monitors, TVs) */
+  --breakpoint-4xl: 2560px; /* 4k and above */
+}
+/* Custom scrollbar for horizontal scroll areas */
+.scrollbar-custom::-webkit-scrollbar {
+  height: 2px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #044093; /* Tailwind gray-500 */
+  border-radius: 99px;
+}
+
+.cropper {
+  position: relative;
+  height: 30vh;
+  background-color: #007f7e;
+  /* border-radius: 6px; */
+}
+
+.viewer {
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.output {
+  position: relative;
+  width: 300px;
+  overflow: hidden;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.3);
+}
+
+.output img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+
+@media screen and (max-width: 768px) {
+  .cropper {
+    width: 100% !important; /* Full width on mobile */
+    /* height: 200px; */
+  }
+
+  .viewer {
+    justify-content: center !important; /* center output on mobile */
+    height: auto;
+    margin-top: 10px; /* spacing between cropper and viewer */
+  }
+
+  .output {
+    width: 100% !important; /* Full width on mobile */
+    max-width: 300px; /* limit max width */
+    margin: 0 auto; /* center it */
+  }
+}
+
+
+.modal-content {
+  width: 70%;
+  
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+}
